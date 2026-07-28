@@ -1,0 +1,14 @@
+# Redirect www to non-www
+https://www.acromedhcltd.com/*  https://acromedhcltd.com/:splat  301
+
+# Redirect index.html to root (prevents duplicate homepage)
+/index.html  /  301
+
+# Custom 404
+/*  /404.html  404
+
+# Block sensitive files
+/.env  /.env  404
+/.git  /.git  404
+/reviews.txt  /reviews.txt  404
+/messages.txt  /messages.txt  404

@@ -1,0 +1,12 @@
+# OS files
+Thumbs.db
+.DS_Store
+
+# Editor files
+*.sublime-workspace
+*.sublime-project
+.vscode/
+.idea/
+
+# Netlify
+.netlify/
