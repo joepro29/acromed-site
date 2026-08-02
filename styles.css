@@ -616,3 +616,115 @@ footer a:hover { color: var(--white); }
   .section-title { font-size: 1.5rem; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.45); }
+  70%  { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+@keyframes heroShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Hero entrance (on load) */
+.hero-text  { animation: fadeInUp 0.9s ease both; }
+.hero-image { animation: fadeIn 1.2s ease both; animation-delay: 0.3s; }
+.page-header h1 { animation: fadeInUp 0.7s ease both; }
+.page-header p  { animation: fadeInUp 0.7s ease both; animation-delay: 0.15s; }
+
+/* Animated gradient hero */
+.hero {
+  background: linear-gradient(120deg, var(--primary-dark) 0%, var(--primary) 35%, #0B8A9B 70%, var(--primary-dark) 100%);
+  background-size: 300% 300%;
+  animation: heroShift 14s ease infinite;
+}
+
+/* Floating decorative elements */
+.hero::before {
+  content: '';
+  position: absolute;
+  left: -8%;
+  bottom: -15%;
+  width: 320px;
+  height: 320px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+  animation: floatY 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Scroll-reveal defaults */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Stat counter pop */
+.stat-card .number { animation: popIn 0.5s ease both; }
+
+/* Card hover lift + image zoom */
+.card { overflow: hidden; }
+.card:hover .card-img { transform: scale(1.06); }
+.card-img { transition: transform 0.5s ease; }
+
+/* WhatsApp float pulse */
+.whatsapp-float { animation: pulseRing 2.5s ease-in-out infinite; }
+
+/* Button subtle shine on hover */
+.cta { position: relative; overflow: hidden; }
+.cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+  transition: left 0.6s ease;
+}
+.cta:hover::after { left: 130%; }
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
