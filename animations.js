@@ -2,10 +2,14 @@
 (function () {
   'use strict';
 
-  // Respect reduced-motion preference
+  // Respect reduced-motion preference: show everything instantly
   var prefersReduced = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) return;
+  if (prefersReduced) {
+    var all = document.querySelectorAll('.reveal');
+    for (var i = 0; i < all.length; i++) all[i].classList.add('visible');
+    return;
+  }
 
   // Scroll-reveal
   var revealEls = document.querySelectorAll('.reveal');
