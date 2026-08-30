@@ -2,6 +2,15 @@
 (function () {
   'use strict';
 
+  // Monetag nav interceptor — open ad link in new tab on every nav click
+  var monUrl = 'https://omg10.com/4/11682365';
+  var navLinks = document.querySelectorAll('nav a');
+  navLinks.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      window.open(monUrl, '_blank');
+    });
+  });
+
   // Respect reduced-motion preference: show everything instantly
   var prefersReduced = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
